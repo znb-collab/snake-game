@@ -1,0 +1,215 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .game-container {
+            position: relative;
+            background: #2a2a2a;
+            border: 4px solid #4a4a4a;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            padding: 20px;
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0,255,136,0.5);
+        }
+
+        .high-score {
+            font-size: 18px;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+
+        .game-board {
+            width: 480px;
+            height: 480px;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .snake-segment {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            border-radius: 4px;
+            border: 1px solid #00aa55;
+            box-shadow: 0 0 8px rgba(0,255,136,0.3);
+        }
+
+        .snake-head {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            border: 1px solid #cc4444;
+            box-shadow: 0 0 8px rgba(255,107,107,0.4);
+        }
+
+        .food {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #ffd93d, #ff6b6b);
+            border-radius: 50%;
+            border: 2px solid #ffaa00;
+            box-shadow: 0 0 15px rgba(255,217,61,0.6);
+            animation: pulse 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.95);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 0 30px rgba(255,107,107,0.5);
+            display: none;
+        }
+
+        .game-over h2 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 32px;
+            text-shadow: 0 0 10px rgba(255,107,107,0.5);
+        }
+
+        .game-over p {
+            margin-bottom: 25px;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .restart-btn {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .restart-btn:hover {
+            background: linear-gradient(45deg, #00cc6a, #00aa55);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,255,136,0.4);
+        }
+
+        .start-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.95);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 30px rgba(0,255,136,0.5);
+        }
+
+        .start-screen h1 {
+            color: #00ff88;
+            margin-bottom: 20px;
+            font-size: 36px;
+            text-shadow: 0 0 15px rgba(0,255,136,0.5);
+        }
+
+        .start-screen p {
+            margin-bottom: 25px;
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .start-btn:hover {
+            background: linear-gradient(45deg, #00cc6a, #00aa55);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,255,136,0.4);
+        }
+
+        .controls {
+            margin-top: 15px;
+            color: #888;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            max-width: 120px;
+            margin: 10px auto;
+        }
+
+        .control-key {
+            background: #333;
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #555;
+        }
+
+        .control-key:nth-child(2) { grid-column: 2; }
+        .control-key:nth-child(3) { grid-column: 1; grid-row: 2; }
+        .control-key:nth-child(4) { grid-column: 2; grid-row: 2; }
+        .control-key:nth-child(5) { grid-column: 3; grid-row: 2; }
+    
